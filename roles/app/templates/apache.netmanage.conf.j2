@@ -1,0 +1,29 @@
+<VirtualHost *:80>
+    ServerAdmin {{ netmanage_admin }}
+    ServerName {{ server_name }}
+
+    DocumentRoot {{ app_root }}/webroot
+    <Directory {{ app_root }}/webroot>
+        AllowOverride all
+    </Directory>
+
+    ErrorLog "/var/log/httpd/netmanage-error_log"
+    CustomLog "/var/log/httpd/netmanage-access_log" combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerAdmin {{ netmanage_admin }}
+    ServerName {{ server_name }}
+
+    DocumentRoot {{ app_root }}/webroot
+    <Directory {{ app_root }}/webroot>
+        AllowOverride all
+    </Directory>
+
+    ErrorLog "/var/log/httpd/netmanage-error_log"
+    CustomLog "/var/log/httpd/netmanage-access_log" combined
+
+    SSLEngine on
+    SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+    SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+</VirtualHost>

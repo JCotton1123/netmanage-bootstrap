@@ -1,0 +1,20 @@
+---
+
+- name: Install syslog-ng
+  yum: name={{ item }} state=present
+  with_items:
+    - syslog-ng
+    - syslog-ng-libdbi
+
+- name: Start syslog-ng
+  service: name=syslog-ng state=started enabled=yes
+
+- name: Install syslog-ng config
+  template: src=syslog-ng.conf.j2 dest=/etc/syslog-ng/syslog-ng.conf
+  notify: restart syslog-ng
+
+- name: Add iptables rule
+  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="514"
+    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited" line="-A INPUT -p udp -m multiport --dports 514 -j ACCEPT"
+  notify: restart iptables
+

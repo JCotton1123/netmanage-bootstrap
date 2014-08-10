@@ -1,0 +1,16 @@
+---
+
+- name: restart apache
+  service: name=httpd state=restarted
+
+- name: restart syslog-ng
+  service: name=syslog-ng state=restarted
+
+- name: restart snmptrapd
+  service: name=snmptrapd state=restarted
+
+- name: restart xinetd
+  service: name=xinetd state=restarted
+
+- name: restart iptables
+  service: name=iptables state=restarted

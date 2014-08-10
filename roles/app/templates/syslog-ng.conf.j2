@@ -1,0 +1,38 @@
+@version: 3.2
+@include "scl.conf"
+
+### Options
+
+options {
+    chain_hostnames(off);
+    use_dns(no);
+    use_fqdn(no);
+};
+
+
+### Sources
+
+source s_network {
+    udp(port(514));
+};
+
+
+### Destinations
+
+destination d_netmanage { program("{{ app_root }}/Console/cake log" template("$HOST $MSG\n") ); };
+
+
+### Filters
+
+filter f_netequip{
+  {% set delim = joiner("or") %}
+  {% for devices in network_devices %}
+    {{ delim() }} netmask("{{ devices }}")
+  {% endfor %}
+};
+
+
+### Logging
+
+# Network Equipment
+log { source(s_network); filter(f_netequip); destination(d_netmanage); };

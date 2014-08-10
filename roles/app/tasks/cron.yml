@@ -1,0 +1,4 @@
+---
+
+- name: Install cron jobs
+  template: src=cron.netmanage.j2 dest=/etc/cron.d/netmanage

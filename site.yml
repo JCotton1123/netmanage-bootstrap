@@ -1,0 +1,17 @@
+---
+
+- name: Setup app server
+  hosts: app-server
+  user: root
+
+  roles:
+    - common
+    - app
+
+- name: Setup db server
+  hosts: db-server
+  user: root
+
+  roles:
+    - common
+    - db

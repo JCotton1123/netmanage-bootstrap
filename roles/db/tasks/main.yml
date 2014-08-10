@@ -1,0 +1,16 @@
+---
+- name: Install Mysql package
+  yum: name=mysql-server state=present
+
+# Red'd for the ansible mysql_db & mysql_user modules
+- name: Install MySQL-python package
+  yum: name=MySQL-python state=present
+
+- name: Start Mysql Service
+  service: name=mysqld state=started enabled=true
+
+- name: Create NetManage database
+  mysql_db: name={{ db_name }} state=present
+
+- name: Create Wordpress database user
+  mysql_user: name={{ db_user }} password={{ db_password }} priv={{ db_name }}.*:ALL host='localhost' state=present

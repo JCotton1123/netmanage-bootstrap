@@ -1,0 +1,21 @@
+---
+
+# Global configuration
+app_root: /var/www/netmanage
+netmanage_admin: root@netmanage.local
+network_devices:
+ - 10.0.0.0/255.0.0.0
+
+# Application source 
+src_url: https://github.com/JCotton1123/netmanage.git
+
+# Apache configuration
+server_name: netmanage.local
+
+# Database configuration
+db_name: netmanage
+db_user: app_netmanage
+db_password: password
+
+# Tftp configuration
+tftp_root: /var/lib/tftpboot

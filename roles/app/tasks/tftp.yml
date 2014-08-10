@@ -1,0 +1,22 @@
+---
+
+- name: Install tftp server
+  yum: name={{ item }} state=present
+  with_items:
+    - tftp-server
+
+- name: Start xinetd
+  service: name=xinetd state=started enabled=yes
+
+- name: Change tftp dir permissions
+  file: path={{ tftp_root }} owner=nobody group=nobody state=directory 
+
+- name: Install tftp config
+  template: src=tftp.j2 dest=/etc/xinetd.d/tftp
+  notify: restart xinetd
+
+- name: Add iptables rule
+  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="69"
+    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited" line="-A INPUT -p udp -m multiport --dports 69 -j ACCEPT"
+  notify: restart iptables
+

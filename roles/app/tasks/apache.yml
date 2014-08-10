@@ -1,0 +1,34 @@
+---
+- name: Install apache 
+  yum: name={{ item }} state=present
+  with_items:
+    - httpd
+    - mod_php
+    - mod_ssl
+
+- name: Start apache
+  service: name=httpd state=started enabled=yes
+
+- name: Install php
+  yum: name={{ item }} state=present
+  with_items:
+    - php
+    - php-pdo
+    - php-mysql
+    - php-mcrypt
+    - php-snmp
+    - php-ldap
+  notify: restart apache
+
+- name: Create the approot
+  file: path={{ app_root }} owner=root group=root state=directory
+
+- name: Install vhost config
+  template: src=apache.netmanage.conf.j2 dest=/etc/httpd/conf.d/25-netmanage.conf
+  notify: restart apache
+
+- name: Add iptables rule
+  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="80,443"
+    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited" line="-A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT"
+  notify: restart iptables
+

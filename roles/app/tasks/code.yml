@@ -1,0 +1,14 @@
+---
+
+- name: Install composer
+  shell: "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin"
+
+- name: Download netmanage
+  command: git clone {{ app_src_url }} {{ app_root }}
+
+- name: Install dependencies
+  shell: "cd {{ app_root }} && /usr/local/bin/composer.phar install"
+
+- name: Change ownership of CakePHP tmp directory
+  file: path={{ app_root }}/tmp owner=apache group=apache state=directory recurse=yes
+

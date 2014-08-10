@@ -1,0 +1,8 @@
+MAILTO={{ netmanage_admin }}
+APP_ROOT={{ app_root }}
+
+# Discovery - every 15 mins
+*/15 * * * *	root		cd $APP_ROOT; ./Console/cake discovery
+
+# Config backups - every hour
+0 * * * *	root		cd $APP_ROOT; ./Console/cake config_backup

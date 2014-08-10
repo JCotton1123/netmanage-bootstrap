@@ -1,0 +1,19 @@
+---
+
+- name: Install net-snmp
+  yum: name={{ item }} state=present
+  with_items:
+    - net-snmp
+
+- name: Start snmptrapd
+  service: name=snmptrapd state=started enabled=yes
+
+- name: Install snmptrapd config
+  template: src=snmptrapd.conf.j2 dest=/etc/snmp/snmptrapd.conf
+  notify: restart snmptrapd
+
+- name: Add iptables rule
+  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="162"
+    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited" line="-A INPUT -p udp -m multiport --dports 162 -j ACCEPT"
+  notify: restart iptables
+
