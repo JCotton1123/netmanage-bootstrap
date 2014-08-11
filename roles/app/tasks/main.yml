@@ -4,5 +4,5 @@
 - include: syslog-ng.yml
 - include: snmp.yml
 - include: tftp.yml
-#- include: code.yml
-#- include: cron.yml
+- include: code.yml
+- include: cron.yml
