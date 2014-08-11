@@ -9,6 +9,9 @@
 - name: Start syslog-ng
   service: name=syslog-ng state=started enabled=yes
 
+- name: Create syslog remote dir
+  file: path=/var/log/remote owner=root group=root state=directory
+
 - name: Install syslog-ng config
   template: src=syslog-ng.conf.j2 dest=/etc/syslog-ng/syslog-ng.conf
   notify: restart syslog-ng

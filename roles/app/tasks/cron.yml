@@ -1,4 +1,4 @@
 ---
 
 - name: Install cron jobs
-  template: src=cron.netmanage.j2 dest=/etc/cron.d/netmanage
+  template: src=cron.netmanage.j2 dest=/etc/cron.d/netmanage owner=root group=root mode=0700
