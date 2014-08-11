@@ -7,7 +7,7 @@ network_devices:
  - 10.0.0.0/255.0.0.0
 
 # Application source 
-src_url: https://github.com/JCotton1123/netmanage.git
+app_src_url: https://github.com/JCotton1123/netmanage.git
 
 # Apache configuration
 server_name: netmanage.local
