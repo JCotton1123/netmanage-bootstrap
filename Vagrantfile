@@ -1,14 +1,14 @@
 VAGRANTFILE_API_VERSION = "2"
 
 box             = 'xcezx/centos6.5-with-ansible'
-hostname        = 'netmanage3.local'
+hostname        = 'netmanage.local'
 ram             = '768'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = box
   config.vm.host_name = hostname
-  config.vm.network "private_network", ip: "192.168.77.27"
+#  config.vm.network "private_network"
   config.vm.network "public_network"
 
   config.vm.provider "virtualbox" do |v|
