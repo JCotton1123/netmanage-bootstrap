@@ -4,4 +4,5 @@
 #
 # authCommunity   log,execute,net public
 # traphandle SNMPv2-MIB::coldStart    /usr/bin/bin/my_great_script cold
-traphandle .1.3.6.1.4.1.9.9.215.2.0.1       {{ app_root }}/Console/cake mac
+disableAuthorization yes
+traphandle default {{ app_root }}/Console/cake snmp_trap

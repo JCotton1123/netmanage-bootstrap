@@ -13,6 +13,10 @@
   template: src=snmptrapd.conf.j2 dest=/etc/snmp/snmptrapd.conf
   notify: restart snmptrapd
 
+- name: Install snmptrapd options
+  template: src=snmptrapd.j2 dest=/etc/sysconfig/snmptrapd
+  notify: restart snmptrapd
+
 - name: Add iptables rule
   lineinfile: dest=/etc/sysconfig/iptables state=present regexp="162"
     insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited" line="-A INPUT -p udp -m multiport --dports 162 -j ACCEPT"
