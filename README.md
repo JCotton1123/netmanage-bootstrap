@@ -1,6 +1,6 @@
 # Netmanage Bootstrap
 
-Use the contents of this repo to bootstrap an instance of NetManage. For now the virtual machine(s) must be running a variant of RHEL (RHEL, CentOS, etc).
+Use the contents of this repo to bootstrap an instance of [NetManage](https://github.com/JCotton1123/netmanage). For now the virtual machine(s) must be running a variant of RHEL (RHEL, CentOS, etc).
 
 ## Setup
 
