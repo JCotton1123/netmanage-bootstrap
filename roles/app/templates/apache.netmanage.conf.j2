@@ -1,19 +1,20 @@
 <VirtualHost *:80>
     ServerAdmin {{ netmanage_admin }}
-    ServerName {{ server_name }}
+    ServerName {{ apache_server_name }}
 
     DocumentRoot {{ app_root }}/webroot
-    <Directory {{ app_root }}/webroot>
-        AllowOverride all
-    </Directory>
 
     ErrorLog "/var/log/httpd/netmanage-error_log"
     CustomLog "/var/log/httpd/netmanage-access_log" combined
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 </VirtualHost>
 
 <VirtualHost *:443>
     ServerAdmin {{ netmanage_admin }}
-    ServerName {{ server_name }}
+    ServerName {{ apache_server_name }}
 
     DocumentRoot {{ app_root }}/webroot
     <Directory {{ app_root }}/webroot>

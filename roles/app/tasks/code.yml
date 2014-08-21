@@ -12,3 +12,5 @@
 - name: Change ownership of CakePHP tmp directory
   file: path={{ app_root }}/tmp owner=apache group=apache state=directory recurse=yes
 
+- name: Create environment settings file
+  template: src=envvars.j2 dest={{ app_root }}/.envvars

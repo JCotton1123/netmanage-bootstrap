@@ -1,0 +1,15 @@
+<?php
+
+//Environment specific variables
+
+define('CODE_ENVIRONMENT', '{{ app_code_env }}');
+
+define('SECURITY_SALT', '{{ app_security_salt }}');
+define('SECURITY_CIPHERSEED', '{{ app_security_cipherseed }}');
+
+define('DB_TYPE', 'Database/Mysql');
+define('DB_PERSIST_CONNS', '0');
+define('DB_HOST', '{{ groups['db-server'] | first }}');
+define('DB_LOGIN', '{{ db_user }}');
+define('DB_PASSWD', '{{ db_password }}');
+define('DB_NAME', '{{ db_name }}');

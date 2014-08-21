@@ -6,11 +6,17 @@ netmanage_admin: root@netmanage.local
 network_devices:
  - 10.0.0.0/255.0.0.0
 
-# Application source 
+# Application
 app_src_url: https://github.com/JCotton1123/netmanage.git
+app_code_env: production
+app_security_salt: DYhG93q34asdgafgSDFSHaqe346agadsfadsf435bWwvniR2G0FgaC9mi
+app_security_cipherseed: 7685934356254623411346356845843345623454245818149683645
 
 # Apache configuration
-server_name: netmanage.local
+appache_server_name: netmanage.local
+
+# PHP configuration
+php_datetime: UTC
 
 # Database configuration
 db_name: netmanage
