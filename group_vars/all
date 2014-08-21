@@ -13,7 +13,7 @@ app_security_salt: DYhG93q34asdgafgSDFSHaqe346agadsfadsf435bWwvniR2G0FgaC9mi
 app_security_cipherseed: 7685934356254623411346356845843345623454245818149683645
 
 # Apache configuration
-appache_server_name: netmanage.local
+apache_server_name: netmanage.local
 
 # PHP configuration
 php_datetime: UTC

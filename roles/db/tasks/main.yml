@@ -12,5 +12,5 @@
 - name: Create NetManage database
   mysql_db: name={{ db_name }} state=present
 
-- name: Create Wordpress database user
-  mysql_user: name={{ db_user }} password={{ db_password }} priv={{ db_name }}.*:ALL host='localhost' state=present
+- name: Create NetManage database user
+  mysql_user: name={{ db_user }} password={{ db_password }} priv={{ db_name }}.*:ALL host='{{ hostvars[groups['app-server'][0]]['ansible_hostname'] }}' state=present

@@ -10,6 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.host_name = hostname
 #  config.vm.network "private_network"
   config.vm.network "public_network"
+#  config.vm.network "public_network", ip: "192.168.7.3"
 
   config.vm.provider "virtualbox" do |v|
     v.name = hostname
