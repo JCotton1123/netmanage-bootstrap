@@ -7,8 +7,6 @@ admin_subnets:
  - 0.0.0.0/0.0.0.0
 netequip_subnets:
  - 10.100.0.0/255.255.0.0
- - 10.103.0.0/255.255.0.0
- - 10.101.0.0/255.255.0.0
 
 # Application
 app_src_url: https://github.com/JCotton1123/netmanage.git

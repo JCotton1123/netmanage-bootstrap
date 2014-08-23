@@ -17,6 +17,8 @@ Fast and easy, use [Vagrant](https://www.vagrantup.com/) to setup a single multi
 
 #### Option 2 - Ansible:
 
+Use [Ansible](http://docs.ansible.com/) and the included configuration to setup a single multi-function instance, or separate application and database instances.
+
 * Edit `hosts` if you'd like to use separate servers for hosting the application and database.
 * Install the EPEL repo `rpm -i http://fedora-epel.mirror.lstn.net/6/i386/epel-release-6-8.noarch.rpm`
 * Install ansible `sudo yum -y install ansible`
