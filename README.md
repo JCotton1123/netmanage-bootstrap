@@ -34,3 +34,7 @@ Use [Ansible](http://docs.ansible.com/) and the included configuration to setup 
 * Configure any *online settings* within the NetManage web interface under *Settings*.
 * Setup regular backups of the NetManage database, usually `mysqldump -u app_netmanage --password=<password> netmanage > netmanage.sql`, and store them in a safe location.
 
+## To Do
+
+* Figure out a better way to handle the firewall configurations
+* Look into a better password generation solution
