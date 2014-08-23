@@ -28,7 +28,9 @@
   notify: restart apache
 
 - name: Add iptables rule
-  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="80,443"
-    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited" line="-A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT"
+  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="{{ item }}.*80,443"
+    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited"
+    line="-A INPUT -s {{ item }} -p tcp -m state --state NEW -m multiport --dports 80,443 -j ACCEPT"
   notify: restart iptables
+  with_items: admin_subnets
 

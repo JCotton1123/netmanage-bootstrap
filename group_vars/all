@@ -3,25 +3,26 @@
 # Global configuration
 app_root: /var/www/netmanage
 netmanage_admin: root@netmanage.local
-network_devices:
- - 10.0.0.0/255.0.0.0
+admin_subnets:
+ - 0.0.0.0/0.0.0.0
+netequip_subnets:
+ - 10.100.0.0/255.255.0.0
+ - 10.103.0.0/255.255.0.0
+ - 10.101.0.0/255.255.0.0
 
 # Application
 app_src_url: https://github.com/JCotton1123/netmanage.git
 app_code_env: production
-app_security_salt: DYhG93q34asdgafgSDFSHaqe346agadsfadsf435bWwvniR2G0FgaC9mi
-app_security_cipherseed: 7685934356254623411346356845843345623454245818149683645
+app_security_salt: "{{ lookup('password', '/tmp/ansible/app_salt chars=ascii_letters,digits length=55') }}"
+app_security_cipherseed: "{{ lookup('password', '/tmp/ansible/app_cipherseed chars=digits length=55') }}"
 
 # Apache configuration
 apache_server_name: netmanage.local
 
-# PHP configuration
-php_datetime: UTC
-
 # Database configuration
 db_name: netmanage
 db_user: app_netmanage
-db_password: password
+db_password: "{{ lookup('password', '/tmp/ansible/db_password chars=ascii_letters,digits length=25') }}"
 
 # Tftp configuration
 tftp_root: /var/lib/tftpboot

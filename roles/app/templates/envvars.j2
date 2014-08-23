@@ -9,8 +9,8 @@ define('SECURITY_CIPHERSEED', '{{ app_security_cipherseed }}');
 
 define('DB_TYPE', 'Database/Mysql');
 define('DB_PERSIST_CONNS', '0');
-//define('DB_HOST', '{{ hostvars[groups['db-server'][0]]['ansible_eth0']['ipv4']['address']  }}');
-define('DB_HOST', '{{ hostvars[groups['db-server'][0]]['ansible_hostname'] }}');
+define('DB_HOST', '{{ hostvars[groups['db-server'][0]]['ansible_eth1']['ipv4']['address'] }}');
+//define('DB_HOST', '{{ hostvars[groups['db-server'][0]]['ansible_hostname'] }}');
 define('DB_LOGIN', '{{ db_user }}');
 define('DB_PASSWD', '{{ db_password }}');
 define('DB_NAME', '{{ db_name }}');

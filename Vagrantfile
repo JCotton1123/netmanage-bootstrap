@@ -1,7 +1,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 box             = 'xcezx/centos6.5-with-ansible'
-hostname        = 'netmanage.local'
+hostname        = 'netmanage2.local'
 ram             = '768'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|

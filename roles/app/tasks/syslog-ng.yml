@@ -17,7 +17,9 @@
   notify: restart syslog-ng
 
 - name: Add iptables rule
-  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="514"
-    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited" line="-A INPUT -p udp -m multiport --dports 514 -j ACCEPT"
+  lineinfile: dest=/etc/sysconfig/iptables state=present regexp="{{ item }}.*514"
+    insertbefore="^-A INPUT -j REJECT --reject-with icmp-host-prohibited"
+    line="-A INPUT -s {{ item }} -p udp -m state --state NEW --dport 514 -j ACCEPT"
   notify: restart iptables
+  with_items: netequip_subnets
 

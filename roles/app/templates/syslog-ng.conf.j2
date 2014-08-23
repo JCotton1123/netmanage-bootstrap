@@ -20,7 +20,7 @@ destination d_file { file("/var/log/remote/netequip.log"); };
 ### Filters
 filter f_netequip{
   {% set delim = joiner("or") %}
-  {% for devices in network_devices %}
+  {% for devices in netequip_subnets %}
     {{ delim() }} netmask("{{ devices }}")
   {% endfor %}
 };
