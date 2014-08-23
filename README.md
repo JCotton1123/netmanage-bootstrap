@@ -2,6 +2,8 @@
 
 Use the contents of this repo to **bootstrap or upgrade an instance of [NetManage](https://github.com/JCotton1123/netmanage)**. For now the virtual machine(s) must be running a variant of RHEL (RHEL, CentOS, etc).
 
+If you'd like to quickly demo NetManage, the [Vagrant install option](#option-1---vagrant) will get an instance of NetManage, infrastructure and application, up and running quickly.
+
 ## Setup
 
 ### Pre install/upgrade
