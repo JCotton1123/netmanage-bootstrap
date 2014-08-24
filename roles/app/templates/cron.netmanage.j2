@@ -6,3 +6,7 @@ APP_ROOT={{ app_root }}
 
 # Config backups - every hour
 0 * * * *	root		cd $APP_ROOT; ./Console/cake config_backup
+
+# Start the queue workers
+*/5 * * * *         root        cd $APP_ROOT; ./Console/cake Queue.Queue runworker
+*/5 * * * *         root        sleep 4; cd $APP_ROOT; ./Console/cake Queue.Queue runworker
