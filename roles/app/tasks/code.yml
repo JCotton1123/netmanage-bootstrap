@@ -15,5 +15,8 @@
 - name: Create environ file
   template: src=envvars.j2 dest={{ app_root }}/.envvars owner=root group=root mode=0755
 
-- name: Create or update the schema
-  shell: "cd {{ app_root }} && ./Console/cake schema update -y"
+- name: Create the schema
+  shell: "cd {{ app_root }} && ./Console/cake schema create -y"
+
+#- name: Update the schema
+#  shell: "cd {{ app_root }} && ./Console/cake schema update -y"
